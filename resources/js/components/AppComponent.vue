@@ -1,6 +1,8 @@
 <template>
     <section>
-      <header-component></header-component>
+      <header-component 
+        v-on:refreshList="refreshList">
+      </header-component>
 
       <task-list-component 
         v-bind:tasks="this.taskMeta.data"

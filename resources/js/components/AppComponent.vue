@@ -8,8 +8,7 @@
 
       <footer-component 
         v-bind:metadata="this.taskMeta.meta"
-        v-on:nextPage="getNextPage"
-        v-on:prevPage="getPrevPage">
+        v-on:changePage="getPage">
       </footer-component>
     </section>
 </template>
@@ -31,12 +30,14 @@
         },
 
         methods: {
-          getNextPage() {
-            console.log("Requesting next page.");
-          },
-
-          getPrevPage() {
-            console.log("Requesting previous page.");
+          getPage(page) {
+            if (page !== undefined) {
+              console.log("Updating page.");
+              axios.get('/' + page.url.split('/').pop()).then(response => {
+                console.log("Response: ", response.data);
+                this.taskMeta = response.data
+              });
+            }
           }
         }
     }

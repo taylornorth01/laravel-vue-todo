@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('app');
 });
 
-Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
+Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.delete');

@@ -37,8 +37,8 @@
       deleteTask(id) {
         axios.delete("/tasks/" + id)
         .then(response => console.log(response))
-        .catch(error => console.log("Error destroying task: ", error));
-        this.$emit('refreshList');
+        .catch(error => console.log("Error destroying task: ", error))
+        .then(() => this.$emit('refreshList'));
       },
 
       editTask(id) {
@@ -47,9 +47,9 @@
           text_body: this.text
         })
         .then(response => console.log(response))
-        .catch(error => console.log("Error destroying task: ", error));
+        .catch(error => console.log("Error destroying task: ", error))
+        .then(() => this.$emit('refreshList'));
         this.showForm();
-        this.$emit('refreshList');
       }
     }
 	}

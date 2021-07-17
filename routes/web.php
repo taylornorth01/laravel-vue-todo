@@ -15,8 +15,9 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::get('/', function () {
-    return view('app');
+	return view('app');
 });
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.delete');

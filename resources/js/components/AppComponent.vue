@@ -1,7 +1,7 @@
 <template>
     <section>
       <header-component 
-        v-on:refreshList="refreshList">
+        v-on:redirectPage="redirectPage">
       </header-component>
 
       <list-component 
@@ -47,6 +47,15 @@
 
         refreshList() {
           console.log("Refreshing list: ", this.currentEndpoint);
+          axios.get(this.currentEndpoint).then(response => {
+            console.log("Response: ", response.data);
+            this.taskMeta = response.data
+          });
+        },
+
+        redirectPage() {
+          console.log("Redirecting to first page.");
+          this.currentEndpoint = "/tasks";
           axios.get(this.currentEndpoint).then(response => {
             console.log("Response: ", response.data);
             this.taskMeta = response.data

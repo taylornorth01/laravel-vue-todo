@@ -45,7 +45,7 @@
 				this.text = '';
 				this.showForm();
 
-				this.$emit('refreshList');
+				this.$emit('redirectPage');
 			}
 		}
 	}

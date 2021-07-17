@@ -27,12 +27,12 @@
 		methods: {
 			nextPage() {
 				console.log("Get next page.");
-				this.$emit('nextPage', getNextUrl(this.metadata.links));
+				this.$emit('changePage', getNextUrl(this.metadata.links));
 			},
 
 			prevPage() {
 				console.log("Get previous page.");
-				this.$emit('prevPage', getPrevUrl(this.metadata.links));
+				this.$emit('changePage', getPrevUrl(this.metadata.links));
 			}
 		}
 	}

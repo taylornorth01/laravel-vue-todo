@@ -1,7 +1,7 @@
 <template>
   <section>
     <ul>
-      <li v-for="task in tasks.data" :key="task.id" >
+      <li v-for="task in tasks" :key="task.id" >
         <p>{{ task.task_title }} -- {{ task.text_body }}</p>
       </li>
     </ul>
@@ -11,18 +11,10 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.');
-            axios.get('/tasks').then(response => {
-                console.log("Response: ", response.data);
-                this.tasks = response.data
-            });
+            console.log('Task list component mounted.');
         },
 
-        data() {
-          return {
-            tasks: [],
-          }
-        },
+        props: ['tasks'],
 
         methods: {
           

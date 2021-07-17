@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div>
+		<div v-if="metadata">
 			<div>
 				<p>Page: {{ metadata.current_page }}</p>
 				<p>Tasks: {{ metadata.from }} - {{ metadata.to }}</p>
@@ -10,6 +10,9 @@
 				<button v-on:click="prevPage">Previous</button>
 				<button v-on:click="nextPage">Next</button>
 			</div>
+		</div>
+		<div v-else>
+			Loading...
 		</div>
 	</section>
 </template>

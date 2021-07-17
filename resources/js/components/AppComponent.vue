@@ -4,10 +4,10 @@
         v-on:refreshList="refreshList">
       </header-component>
 
-      <task-list-component 
+      <list-component 
         v-bind:tasks="this.taskMeta.data"
         v-on:refreshList="refreshList">
-      </task-list-component>
+      </list-component>
 
       <footer-component 
         v-bind:metadata="this.taskMeta.meta"

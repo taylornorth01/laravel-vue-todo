@@ -6,6 +6,7 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Http\Resources\TaskResource;
 use App\Http\Resources\TaskCollection;
+use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
 {
@@ -26,9 +27,10 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
-        //
+        Task::create($request->validated());
+        return ['message' => 'A new task has been created!'];
     }
 
     /**
@@ -63,5 +65,6 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
+        return ['message' => 'A task has been destroyed.'];
     }
 }

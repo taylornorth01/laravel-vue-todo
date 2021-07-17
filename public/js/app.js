@@ -1855,6 +1855,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -1870,7 +1875,19 @@ __webpack_require__.r(__webpack_exports__);
       taskMeta: []
     };
   },
-  methods: {}
+  methods: {
+    getPage: function getPage(page) {
+      var _this2 = this;
+
+      if (page !== undefined) {
+        console.log("Updating page.");
+        axios.get('/' + page.url.split('/').pop()).then(function (response) {
+          console.log("Response: ", response.data);
+          _this2.taskMeta = response.data;
+        });
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -1973,15 +1990,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utility */ "./resources/js/utility.js");
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     console.log('Footer component mounted.');
+  },
+  props: ['metadata'],
+  methods: {
+    nextPage: function nextPage() {
+      console.log("Get next page.");
+      this.$emit('changePage', (0,_utility__WEBPACK_IMPORTED_MODULE_0__.getNextUrl)(this.metadata.links));
+    },
+    prevPage: function prevPage() {
+      console.log("Get previous page.");
+      this.$emit('changePage', (0,_utility__WEBPACK_IMPORTED_MODULE_0__.getPrevUrl)(this.metadata.links));
+    }
   }
 });
 
@@ -2124,6 +2164,35 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/utility.js":
+/*!*********************************!*\
+  !*** ./resources/js/utility.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getNextUrl": () => (/* binding */ getNextUrl),
+/* harmony export */   "getPrevUrl": () => (/* binding */ getPrevUrl)
+/* harmony export */ });
+function getNextUrl(linkArr) {
+  return linkArr.filter(function (link) {
+    if (link.label.split(' ').includes("Next")) {
+      return link.url;
+    }
+  }).pop();
+}
+function getPrevUrl(linkArr) {
+  return linkArr.filter(function (link) {
+    if (link.label.split(' ').includes("Previous")) {
+      return link.url;
+    }
+  }).pop();
+}
 
 /***/ }),
 
@@ -37965,7 +38034,10 @@ var render = function() {
       _vm._v(" "),
       _c("task-list-component", { attrs: { tasks: this.taskMeta.data } }),
       _vm._v(" "),
-      _c("footer-component")
+      _c("footer-component", {
+        attrs: { metadata: this.taskMeta.meta },
+        on: { changePage: _vm.getPage }
+      })
     ],
     1
   )
@@ -38084,7 +38156,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section")
+  return _c("section", [
+    _c("div", [
+      _c("div", [
+        _c("p", [_vm._v("Page: " + _vm._s(_vm.metadata.current_page))]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Tasks: " +
+              _vm._s(_vm.metadata.from) +
+              " - " +
+              _vm._s(_vm.metadata.to)
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Total: " + _vm._s(_vm.metadata.total))])
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("button", { on: { click: _vm.prevPage } }, [_vm._v("Previous")]),
+        _vm._v(" "),
+        _c("button", { on: { click: _vm.nextPage } }, [_vm._v("Next")])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

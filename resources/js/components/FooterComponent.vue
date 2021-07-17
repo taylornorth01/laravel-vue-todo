@@ -15,6 +15,8 @@
 </template>
 
 <script>
+	import { getNextUrl, getPrevUrl } from '../utility';
+
 	export default {
 		mounted() {
 			console.log('Footer component mounted.')
@@ -25,12 +27,12 @@
 		methods: {
 			nextPage() {
 				console.log("Get next page.");
-				this.$emit('nextPage');
+				this.$emit('nextPage', getNextUrl(this.metadata.links));
 			},
 
 			prevPage() {
 				console.log("Get previous page.");
-				this.$emit('prevPage');
+				this.$emit('prevPage', getPrevUrl(this.metadata.links));
 			}
 		}
 	}

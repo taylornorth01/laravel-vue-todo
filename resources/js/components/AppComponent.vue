@@ -4,7 +4,7 @@
 
       <task-list-component v-bind:tasks="this.taskMeta.data"></task-list-component>
 
-      <footer-component></footer-component>
+      <footer-component v-bind:metadata="this.taskMeta.meta"></footer-component>
     </section>
 </template>
 

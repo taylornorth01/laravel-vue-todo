@@ -39,13 +39,12 @@
 					text_body: this.text
 				})
 				.then(response => console.log(response.data.message))
-				.catch(error => console.log(error));
+				.catch(error => console.log(error))
+				.then(() => this.$emit('redirectPage'));
 
 				this.title = '';
 				this.text = '';
 				this.showForm();
-
-				this.$emit('redirectPage');
 			}
 		}
 	}

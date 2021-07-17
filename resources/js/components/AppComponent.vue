@@ -2,9 +2,15 @@
     <section>
       <header-component></header-component>
 
-      <task-list-component v-bind:tasks="this.taskMeta.data"></task-list-component>
+      <task-list-component 
+        v-bind:tasks="this.taskMeta.data">
+      </task-list-component>
 
-      <footer-component v-bind:metadata="this.taskMeta.meta"></footer-component>
+      <footer-component 
+        v-bind:metadata="this.taskMeta.meta"
+        v-on:nextPage="getNextPage"
+        v-on:prevPage="getPrevPage">
+      </footer-component>
     </section>
 </template>
 
@@ -25,7 +31,13 @@
         },
 
         methods: {
-          
+          getNextPage() {
+            console.log("Requesting next page.");
+          },
+
+          getPrevPage() {
+            console.log("Requesting previous page.");
+          }
         }
     }
 </script>

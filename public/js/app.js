@@ -1860,19 +1860,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
 
     console.log('App component mounted.');
-    axios.get('/tasks').then(function (response) {
+    axios.get(this.currentEndpoint).then(function (response) {
       console.log("Response: ", response.data);
       _this.taskMeta = response.data;
     });
   },
   data: function data() {
     return {
-      taskMeta: []
+      taskMeta: [],
+      currentEndpoint: '/tasks'
     };
   },
   methods: {
@@ -1881,11 +1885,21 @@ __webpack_require__.r(__webpack_exports__);
 
       if (page !== undefined) {
         console.log("Updating page.");
-        axios.get('/' + page.url.split('/').pop()).then(function (response) {
+        this.currentEndpoint = '/' + page.url.split('/').pop();
+        axios.get(this.currentEndpoint).then(function (response) {
           console.log("Response: ", response.data);
           _this2.taskMeta = response.data;
         });
       }
+    },
+    refreshList: function refreshList() {
+      var _this3 = this;
+
+      console.log("Refreshing list: ", this.currentEndpoint);
+      axios.get(this.currentEndpoint).then(function (response) {
+        console.log("Response: ", response.data);
+        _this3.taskMeta = response.data;
+      });
     }
   }
 });
@@ -2007,6 +2021,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
@@ -2044,9 +2061,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     console.log('Header component mounted.');
+  },
+  data: function data() {
+    return {
+      isShowForm: false,
+      title: '',
+      text: ''
+    };
+  },
+  methods: {
+    showForm: function showForm() {
+      this.isShowForm = !this.isShowForm;
+    },
+    createTask: function createTask() {
+      axios.post('/tasks', {
+        task_title: this.title,
+        text_body: this.text
+      }).then(function (response) {
+        return console.log(response.data.message);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+      this.title = '';
+      this.text = '';
+      this.showForm();
+      this.$emit('refreshList');
+    }
   }
 });
 
@@ -2073,12 +2126,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     console.log('Task list component mounted.');
   },
   props: ['tasks'],
-  methods: {}
+  methods: {
+    deleteTask: function deleteTask(id) {
+      axios["delete"]("/tasks/" + id).then(function (response) {
+        return console.log(response);
+      });
+      this.$emit('refreshList');
+    }
+  }
 });
 
 /***/ }),
@@ -38030,9 +38093,12 @@ var render = function() {
   return _c(
     "section",
     [
-      _c("header-component"),
+      _c("header-component", { on: { refreshList: _vm.refreshList } }),
       _vm._v(" "),
-      _c("task-list-component", { attrs: { tasks: this.taskMeta.data } }),
+      _c("task-list-component", {
+        attrs: { tasks: this.taskMeta.data },
+        on: { refreshList: _vm.refreshList }
+      }),
       _vm._v(" "),
       _c("footer-component", {
         attrs: { metadata: this.taskMeta.meta },
@@ -38157,28 +38223,30 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c("div", [
-      _c("div", [
-        _c("p", [_vm._v("Page: " + _vm._s(_vm.metadata.current_page))]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Tasks: " +
-              _vm._s(_vm.metadata.from) +
-              " - " +
-              _vm._s(_vm.metadata.to)
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Total: " + _vm._s(_vm.metadata.total))])
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("button", { on: { click: _vm.prevPage } }, [_vm._v("Previous")]),
-        _vm._v(" "),
-        _c("button", { on: { click: _vm.nextPage } }, [_vm._v("Next")])
-      ])
-    ])
+    _vm.metadata
+      ? _c("div", [
+          _c("div", [
+            _c("p", [_vm._v("Page: " + _vm._s(_vm.metadata.current_page))]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Tasks: " +
+                  _vm._s(_vm.metadata.from) +
+                  " - " +
+                  _vm._s(_vm.metadata.to)
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v("Total: " + _vm._s(_vm.metadata.total))])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("button", { on: { click: _vm.prevPage } }, [_vm._v("Previous")]),
+            _vm._v(" "),
+            _c("button", { on: { click: _vm.nextPage } }, [_vm._v("Next")])
+          ])
+        ])
+      : _c("div", [_vm._v("\n\t\tLoading...\n\t")])
   ])
 }
 var staticRenderFns = []
@@ -38204,7 +38272,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section")
+  return _c("section", [
+    _c("div", [
+      _c("p", [_vm._v("Task list")]),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.showForm } }, [
+        _vm._v("Create new task")
+      ]),
+      _vm._v(" "),
+      _vm.isShowForm
+        ? _c("div", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title,
+                  expression: "title"
+                }
+              ],
+              attrs: { type: "text" },
+              domProps: { value: _vm.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.text,
+                  expression: "text"
+                }
+              ],
+              attrs: { type: "text" },
+              domProps: { value: _vm.text },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.text = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("button", { on: { click: _vm.createTask } }, [_vm._v("Submit")])
+          ])
+        : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38236,7 +38360,23 @@ var render = function() {
         return _c("li", { key: task.id }, [
           _c("p", [
             _vm._v(_vm._s(task.task_title) + " -- " + _vm._s(task.text_body))
-          ])
+          ]),
+          _vm._v(" "),
+          _c("button", [_vm._v("Edit")]),
+          _vm._v(" "),
+          _c("button", [_vm._v("View")]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.deleteTask(task.id)
+                }
+              }
+            },
+            [_vm._v("Delete")]
+          )
         ])
       }),
       0

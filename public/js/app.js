@@ -1900,6 +1900,16 @@ __webpack_require__.r(__webpack_exports__);
         console.log("Response: ", response.data);
         _this3.taskMeta = response.data;
       });
+    },
+    redirectPage: function redirectPage() {
+      var _this4 = this;
+
+      console.log("Redirecting to first page.");
+      this.currentEndpoint = "/tasks";
+      axios.get(this.currentEndpoint).then(function (response) {
+        console.log("Response: ", response.data);
+        _this4.taskMeta = response.data;
+      });
     }
   }
 });
@@ -2087,6 +2097,8 @@ __webpack_require__.r(__webpack_exports__);
       this.isShowForm = !this.isShowForm;
     },
     createTask: function createTask() {
+      var _this = this;
+
       axios.post('/tasks', {
         task_title: this.title,
         text_body: this.text
@@ -2094,11 +2106,12 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(response.data.message);
       })["catch"](function (error) {
         return console.log(error);
+      }).then(function () {
+        return _this.$emit('redirectPage');
       });
       this.title = '';
       this.text = '';
       this.showForm();
-      this.$emit('refreshList');
     }
   }
 });
@@ -2181,14 +2194,19 @@ __webpack_require__.r(__webpack_exports__);
       this.isShowForm = !this.isShowForm;
     },
     deleteTask: function deleteTask(id) {
+      var _this = this;
+
       axios["delete"]("/tasks/" + id).then(function (response) {
         return console.log(response);
       })["catch"](function (error) {
         return console.log("Error destroying task: ", error);
+      }).then(function () {
+        return _this.$emit('refreshList');
       });
-      this.$emit('refreshList');
     },
     editTask: function editTask(id) {
+      var _this2 = this;
+
       axios.put("/tasks/" + id, {
         task_title: this.title,
         text_body: this.text
@@ -2196,9 +2214,10 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(response);
       })["catch"](function (error) {
         return console.log("Error destroying task: ", error);
+      }).then(function () {
+        return _this2.$emit('refreshList');
       });
       this.showForm();
-      this.$emit('refreshList');
     }
   }
 });
@@ -38224,7 +38243,7 @@ var render = function() {
   return _c(
     "section",
     [
-      _c("header-component", { on: { refreshList: _vm.refreshList } }),
+      _c("header-component", { on: { redirectPage: _vm.redirectPage } }),
       _vm._v(" "),
       _c("list-component", {
         attrs: { tasks: this.taskMeta.data },

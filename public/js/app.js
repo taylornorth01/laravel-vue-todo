@@ -39075,8 +39075,11 @@ var render = function() {
               })
             ]
           ),
-          _vm._v(" "),
-          _vm._v(" 17/7/21\n        ")
+          _vm._v(
+            "\n          " +
+              _vm._s(_vm.task.date_created.split(" ").shift()) +
+              "\n        "
+          )
         ])
       ]),
       _vm._v(" "),

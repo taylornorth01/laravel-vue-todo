@@ -105,7 +105,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 75px;
+  width: 120px;
 }
 .task__details {
   min-width: 300px;

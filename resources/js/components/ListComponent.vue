@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <ul>
+  <section class="task__container">
+    <ul class="list__style__none">
       <li v-for="task in tasks" :key="task.id" >
         <task-component 
           v-bind:task="task" 

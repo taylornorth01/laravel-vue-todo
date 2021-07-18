@@ -1,66 +1,72 @@
 <template>
-    <section>
-      <header-component 
-        v-on:redirectPage="redirectPage">
-      </header-component>
+	<section class="main__layout">
+		<div class="control__panel">
+			<header-component 
+				v-on:redirectPage="redirectPage">
+			</header-component>
+			<footer-component 
+				v-bind:metadata="this.taskMeta.meta"
+				v-on:changePage="getPage">
+			</footer-component>
+		</div>
+		
 
-      <list-component 
-        v-bind:tasks="this.taskMeta.data"
-        v-on:refreshList="refreshList">
-      </list-component>
+		<list-component 
+			v-bind:tasks="this.taskMeta.data"
+			v-on:refreshList="refreshList">
+		</list-component>
 
-      <footer-component 
-        v-bind:metadata="this.taskMeta.meta"
-        v-on:changePage="getPage">
-      </footer-component>
-    </section>
+		
+	</section>
 </template>
 
 <script>
-    export default {
-      mounted(){
-        console.log('App component mounted.');
-        axios.get(this.currentEndpoint).then(response => {
-          console.log("Response: ", response.data);
-          this.taskMeta = response.data
-        });
-      },
+	import "../../css/app.css";
 
-      data() {
-        return {
-          taskMeta: [],
-          currentEndpoint: '/tasks'
-        }
-      },
+	export default {
+		mounted(){
+			console.log('App component mounted.');
+			axios.get(this.currentEndpoint).then(response => {
+				console.log("Response: ", response.data);
+				this.taskMeta = response.data
+			});
+		},
 
-      methods: {
-        getPage(page) {
-          if (page !== undefined) {
-            console.log("Updating page.");
-            this.currentEndpoint = '/' + page.url.split('/').pop();
-            axios.get(this.currentEndpoint).then(response => {
-              console.log("Response: ", response.data);
-              this.taskMeta = response.data
-            });
-          }
-        },
+		data() {
+			return {
+				taskMeta: [],
+				currentEndpoint: '/tasks'
+			}
+		},
 
-        refreshList() {
-          console.log("Refreshing list: ", this.currentEndpoint);
-          axios.get(this.currentEndpoint).then(response => {
-            console.log("Response: ", response.data);
-            this.taskMeta = response.data
-          });
-        },
+		methods: {
+			getPage(page) {
+				if (page !== undefined) {
+					console.log("Updating page.");
+					this.currentEndpoint = '/' + page.url.split('/').pop();
+					axios.get(this.currentEndpoint).then(response => {
+						console.log("Response: ", response.data);
+						this.taskMeta = response.data
+					});
+				}
+			},
 
-        redirectPage() {
-          console.log("Redirecting to first page.");
-          this.currentEndpoint = "/tasks";
-          axios.get(this.currentEndpoint).then(response => {
-            console.log("Response: ", response.data);
-            this.taskMeta = response.data
-          });
-        }
-      }
-    }
+			refreshList() {
+				console.log("Refreshing list: ", this.currentEndpoint);
+				axios.get(this.currentEndpoint).then(response => {
+					console.log("Response: ", response.data);
+					this.taskMeta = response.data
+				});
+			},
+
+			redirectPage() {
+				console.log("Redirecting to first page.");
+				this.currentEndpoint = "/tasks";
+				axios.get(this.currentEndpoint).then(response => {
+					console.log("Response: ", response.data);
+					this.taskMeta = response.data
+				});
+			}
+		}
+	}
 </script>

@@ -1,14 +1,18 @@
 <template>
 	<section>
-		<div v-if="metadata">
-			<div>
+		<div class="app__footer" v-if="metadata">
+			<div class="page__info">
 				<p>Page: {{ metadata.current_page }}</p>
-				<p>Tasks: {{ metadata.from }} - {{ metadata.to }}</p>
+				<p>Tasks: {{ metadata.from }}-{{ metadata.to }}</p>
 				<p>Total: {{ metadata.total }}</p>
 			</div>
-			<div>
-				<button v-on:click="prevPage">Previous</button>
-				<button v-on:click="nextPage">Next</button>
+			<div class="page__buttons">
+				<div v-on:click="prevPage">
+					Previous
+				</div>
+				<div v-on:click="nextPage">
+					Next
+				</div>
 			</div>
 		</div>
 		<div v-else>

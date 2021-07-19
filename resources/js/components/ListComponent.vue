@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<ul v-for="task in tasks" :key="task.id">
-			<task-component :task="task"></task-component>
+			<task-component :task="task" @refresh="$emit('refresh')"></task-component>
 		</ul>
 	</div>
 </template>

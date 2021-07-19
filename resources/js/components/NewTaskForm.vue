@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="newtask__form">
 		<input type="text" placeholder="Task title" v-model="title" />
 		<input type="text" placeholder="Task description" v-model="description" />
 		<button @click="createTask">Create task</button>

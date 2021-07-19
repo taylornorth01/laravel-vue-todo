@@ -6,6 +6,7 @@
 					task.date_created
 				}}
 				<button @click="isEditVisible = !isEditVisible">Edit</button>
+				<button @click="deleteTask">Delete</button>
 			</div>
 			<div v-else>
 				<input type="text" v-model="title" />
@@ -45,6 +46,16 @@ export default {
 					console.log("Task editing successful.");
 				})
 				.catch((err) => console.error("Task editing failed.", err));
+		},
+
+		deleteTask() {
+			console.log("Deleting task.");
+			axios
+				.delete("/tasks/" + this.task.id)
+				.then((res) => {
+					console.log("Task deleting successful.");
+				})
+				.catch((err) => console.error("Task deleting failed.", err));
 		}
 	}
 };

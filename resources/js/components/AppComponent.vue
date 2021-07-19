@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<new-task-form></new-task-form>
-		<list-component :tasks="tasks"></list-component>
+		<new-task-form @refresh="refreshPage"></new-task-form>
+		<list-component :tasks="tasks" @refresh="refreshPage"></list-component>
 		<page-navigation
 			:links="meta.links"
 			:meta="meta.data"
@@ -25,7 +25,8 @@ export default {
 		return {
 			isLoading: true,
 			tasks: [],
-			meta: { links: [], data: [] }
+			meta: { links: [], data: [] },
+			currentEndpoint: "/tasks"
 		};
 	},
 
@@ -33,7 +34,7 @@ export default {
 		initializeApp() {
 			console.log("App loading...");
 			axios
-				.get("/tasks")
+				.get(this.currentEndpoint)
 				.then((res) => {
 					console.log("Request successful.");
 					this.tasks = res.data.data;
@@ -44,8 +45,22 @@ export default {
 		},
 
 		requestPage(link) {
+			this.currentEndpoint = link;
 			axios
 				.get(link)
+				.then((res) => {
+					console.log("Request successful.");
+					this.tasks = res.data.data;
+					this.meta = { links: res.data.links, data: res.data.meta };
+				})
+				.catch((err) => console.error("Request failed.", err))
+				.then(() => (this.isLoading = false));
+		},
+
+		refreshPage() {
+			console.log("Refreshing page.");
+			axios
+				.get(this.currentEndpoint)
 				.then((res) => {
 					console.log("Request successful.");
 					this.tasks = res.data.data;

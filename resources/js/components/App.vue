@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<new-task-form @refresh="refreshPage"></new-task-form>
+		<new-task-form @gotoFirstPage="loadFirstPage"></new-task-form>
 		<list :tasks="tasks" @refresh="refreshPage"></list>
 		<page-navigation
 			:links="meta.links"
@@ -33,25 +33,28 @@ export default {
 	methods: {
 		initializeApp() {
 			console.log("App loading...");
+			this.isLoading = true;
 			axios
 				.get(this.currentEndpoint)
 				.then((res) => {
 					console.log("Request successful.");
 					this.tasks = res.data.data;
 					this.meta = { links: res.data.links, data: res.data.meta };
+					this.isLoading = false;
 				})
-				.catch((err) => console.error("Request failed.", err))
-				.then(() => (this.isLoading = false));
+				.catch((err) => console.error("Request failed.", err));
 		},
 
 		requestPage(link) {
 			this.currentEndpoint = link;
+			this.isLoading = true;
 			axios
 				.get(link)
 				.then((res) => {
 					console.log("Request successful.");
 					this.tasks = res.data.data;
 					this.meta = { links: res.data.links, data: res.data.meta };
+					this.isLoading = false;
 				})
 				.catch((err) => console.error("Request failed.", err))
 				.then(() => (this.isLoading = false));
@@ -59,15 +62,31 @@ export default {
 
 		refreshPage() {
 			console.log("Refreshing page.");
+			this.isLoading = true;
 			axios
 				.get(this.currentEndpoint)
 				.then((res) => {
 					console.log("Request successful.");
 					this.tasks = res.data.data;
 					this.meta = { links: res.data.links, data: res.data.meta };
+					this.isLoading = false;
 				})
 				.catch((err) => console.error("Request failed.", err))
 				.then(() => (this.isLoading = false));
+		},
+
+		loadFirstPage() {
+			console.log("Redirecting to first page.");
+			this.isLoading = true;
+			axios
+				.get("/tasks")
+				.then((res) => {
+					console.log("Request successful.");
+					this.tasks = res.data.data;
+					this.meta = { links: res.data.links, data: res.data.meta };
+					this.isLoading = false;
+				})
+				.catch((err) => console.error("Request failed.", err));
 		}
 	}
 };

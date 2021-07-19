@@ -1880,7 +1880,8 @@ __webpack_require__.r(__webpack_exports__);
       meta: {
         links: [],
         data: []
-      }
+      },
+      currentEndpoint: "/tasks"
     };
   },
   methods: {
@@ -1888,7 +1889,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log("App loading...");
-      axios.get("/tasks").then(function (res) {
+      axios.get(this.currentEndpoint).then(function (res) {
         console.log("Request successful.");
         _this.tasks = res.data.data;
         _this.meta = {
@@ -1904,6 +1905,7 @@ __webpack_require__.r(__webpack_exports__);
     requestPage: function requestPage(link) {
       var _this2 = this;
 
+      this.currentEndpoint = link;
       axios.get(link).then(function (res) {
         console.log("Request successful.");
         _this2.tasks = res.data.data;
@@ -1915,6 +1917,23 @@ __webpack_require__.r(__webpack_exports__);
         return console.error("Request failed.", err);
       }).then(function () {
         return _this2.isLoading = false;
+      });
+    },
+    refreshPage: function refreshPage() {
+      var _this3 = this;
+
+      console.log("Refreshing page.");
+      axios.get(this.currentEndpoint).then(function (res) {
+        console.log("Request successful.");
+        _this3.tasks = res.data.data;
+        _this3.meta = {
+          links: res.data.links,
+          data: res.data.meta
+        };
+      })["catch"](function (err) {
+        return console.error("Request failed.", err);
+      }).then(function () {
+        return _this3.isLoading = false;
       });
     }
   }
@@ -1986,6 +2005,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createTask: function createTask() {
+      var _this = this;
+
       console.log("Creating a new task.");
       axios.post("/tasks", {
         task_title: this.title,
@@ -1994,6 +2015,8 @@ __webpack_require__.r(__webpack_exports__);
         console.log("Task creation successful.");
       })["catch"](function (err) {
         return console.error("Task creation failed.", err);
+      }).then(function () {
+        return _this.$emit("refresh");
       });
     }
   }
@@ -2093,6 +2116,8 @@ __webpack_require__.r(__webpack_exports__);
   props: ["task"],
   methods: {
     editTask: function editTask() {
+      var _this = this;
+
       console.log("Editing task.");
       this.isEditVisible = !this.isEditVisible;
       axios.put("/tasks/" + this.task.id, {
@@ -2102,14 +2127,20 @@ __webpack_require__.r(__webpack_exports__);
         console.log("Task editing successful.");
       })["catch"](function (err) {
         return console.error("Task editing failed.", err);
+      }).then(function () {
+        return _this.$emit("refresh");
       });
     },
     deleteTask: function deleteTask() {
+      var _this2 = this;
+
       console.log("Deleting task.");
       axios["delete"]("/tasks/" + this.task.id).then(function (res) {
         console.log("Task deleting successful.");
       })["catch"](function (err) {
         return console.error("Task deleting failed.", err);
+      }).then(function () {
+        return _this2.$emit("refresh");
       });
     }
   }
@@ -38248,9 +38279,12 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("new-task-form"),
+      _c("new-task-form", { on: { refresh: _vm.refreshPage } }),
       _vm._v(" "),
-      _c("list-component", { attrs: { tasks: _vm.tasks } }),
+      _c("list-component", {
+        attrs: { tasks: _vm.tasks },
+        on: { refresh: _vm.refreshPage }
+      }),
       _vm._v(" "),
       _c("page-navigation", {
         attrs: { links: _vm.meta.links, meta: _vm.meta.data },
@@ -38289,7 +38323,16 @@ var render = function() {
       return _c(
         "ul",
         { key: task.id },
-        [_c("task-component", { attrs: { task: task } })],
+        [
+          _c("task-component", {
+            attrs: { task: task },
+            on: {
+              refresh: function($event) {
+                return _vm.$emit("refresh")
+              }
+            }
+          })
+        ],
         1
       )
     }),

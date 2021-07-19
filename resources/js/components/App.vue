@@ -1,12 +1,21 @@
 <template>
 	<div class="main">
-		<new-task-form @gotoFirstPage="loadFirstPage"></new-task-form>
-		<list :tasks="tasks" @refresh="refreshPage"></list>
-		<page-navigation
-			:links="meta.links"
-			:meta="meta.data"
-			@loadPage="requestPage"
-		></page-navigation>
+		<div class="left__panel">
+			<div>
+				<div class="app__title">
+					Application title
+				</div>
+				<new-task-form @gotoFirstPage="loadFirstPage"></new-task-form>
+			</div>
+			<page-navigation
+				:links="meta.links"
+				:meta="meta.data"
+				@loadPage="requestPage"
+			></page-navigation>
+		</div>
+		<div>
+			<list :tasks="tasks" @refresh="refreshPage"></list>
+		</div>
 	</div>
 </template>
 

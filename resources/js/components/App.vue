@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<new-task-form @refresh="refreshPage"></new-task-form>
-		<list-component :tasks="tasks" @refresh="refreshPage"></list-component>
+		<list :tasks="tasks" @refresh="refreshPage"></list>
 		<page-navigation
 			:links="meta.links"
 			:meta="meta.data"
@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import ListComponent from "../../mock_practice/ListComponent.vue";
+import List from "./List.vue";
 import NewTaskForm from "./NewTaskForm.vue";
 import PageNavigation from "./PageNavigation.vue";
 export default {
-	components: { ListComponent, NewTaskForm, PageNavigation },
+	components: { List, NewTaskForm, PageNavigation },
 	mounted() {
 		console.log("App component mounted.");
 		this.initializeApp();

@@ -45,7 +45,8 @@ export default {
 				.then((res) => {
 					console.log("Task editing successful.");
 				})
-				.catch((err) => console.error("Task editing failed.", err));
+				.catch((err) => console.error("Task editing failed.", err))
+				.then(() => this.$emit("refresh"));
 		},
 
 		deleteTask() {
@@ -55,7 +56,8 @@ export default {
 				.then((res) => {
 					console.log("Task deleting successful.");
 				})
-				.catch((err) => console.error("Task deleting failed.", err));
+				.catch((err) => console.error("Task deleting failed.", err))
+				.then(() => this.$emit("refresh"));
 		}
 	}
 };

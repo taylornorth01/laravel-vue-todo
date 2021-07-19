@@ -1,11 +1,11 @@
 <template>
-	<div>
-		<div>
+	<div class="page__navigation">
+		<div class="page__info">
 			<p>Page: {{ meta.current_page }}</p>
 			<p>Tasks: {{ meta.from }}-{{ meta.to }}</p>
 			<p>Total: {{ meta.total }}</p>
 		</div>
-		<div>
+		<div class="page__buttons">
 			<div @click="loadPage(links.prev)">
 				Previous
 			</div>

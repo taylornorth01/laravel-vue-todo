@@ -1,15 +1,15 @@
 <template>
 	<div>
 		<ul v-for="task in tasks" :key="task.id">
-			<task-component :task="task" @refresh="$emit('refresh')"></task-component>
+			<task :task="task" @refresh="$emit('refresh')"></task>
 		</ul>
 	</div>
 </template>
 
 <script>
-import TaskComponent from "../../mock_practice/TaskComponent.vue";
+import Task from "./Task.vue";
 export default {
-	components: { TaskComponent },
+	components: { Task },
 	mounted() {
 		console.log("List component mounted.");
 	},

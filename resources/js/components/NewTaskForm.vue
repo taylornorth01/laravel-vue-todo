@@ -27,7 +27,8 @@ export default {
 				.then((res) => {
 					console.log("Task creation successful.");
 				})
-				.catch((err) => console.error("Task creation failed.", err));
+				.catch((err) => console.error("Task creation failed.", err))
+				.then(() => this.$emit("refresh"));
 		}
 	}
 };

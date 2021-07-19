@@ -1889,6 +1889,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log("App loading...");
+      this.isLoading = true;
       axios.get(this.currentEndpoint).then(function (res) {
         console.log("Request successful.");
         _this.tasks = res.data.data;
@@ -1896,16 +1897,16 @@ __webpack_require__.r(__webpack_exports__);
           links: res.data.links,
           data: res.data.meta
         };
+        _this.isLoading = false;
       })["catch"](function (err) {
         return console.error("Request failed.", err);
-      }).then(function () {
-        return _this.isLoading = false;
       });
     },
     requestPage: function requestPage(link) {
       var _this2 = this;
 
       this.currentEndpoint = link;
+      this.isLoading = true;
       axios.get(link).then(function (res) {
         console.log("Request successful.");
         _this2.tasks = res.data.data;
@@ -1913,6 +1914,7 @@ __webpack_require__.r(__webpack_exports__);
           links: res.data.links,
           data: res.data.meta
         };
+        _this2.isLoading = false;
       })["catch"](function (err) {
         return console.error("Request failed.", err);
       }).then(function () {
@@ -1923,6 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       console.log("Refreshing page.");
+      this.isLoading = true;
       axios.get(this.currentEndpoint).then(function (res) {
         console.log("Request successful.");
         _this3.tasks = res.data.data;
@@ -1930,10 +1933,28 @@ __webpack_require__.r(__webpack_exports__);
           links: res.data.links,
           data: res.data.meta
         };
+        _this3.isLoading = false;
       })["catch"](function (err) {
         return console.error("Request failed.", err);
       }).then(function () {
         return _this3.isLoading = false;
+      });
+    },
+    loadFirstPage: function loadFirstPage() {
+      var _this4 = this;
+
+      console.log("Redirecting to first page.");
+      this.isLoading = true;
+      axios.get("/tasks").then(function (res) {
+        console.log("Request successful.");
+        _this4.tasks = res.data.data;
+        _this4.meta = {
+          links: res.data.links,
+          data: res.data.meta
+        };
+        _this4.isLoading = false;
+      })["catch"](function (err) {
+        return console.error("Request failed.", err);
       });
     }
   }
@@ -2016,7 +2037,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.error("Task creation failed.", err);
       }).then(function () {
-        return _this.$emit("refresh");
+        return _this.$emit("gotoFirstPage");
       });
     }
   }
@@ -2173,7 +2194,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
 
 files.keys().map(function (key) {
-  return Vue.component(key.split('/').pop().split('.')[0], files(key)["default"]);
+  return Vue.component(key.split("/").pop().split(".")[0], files(key)["default"]);
 }); // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
@@ -2183,7 +2204,7 @@ files.keys().map(function (key) {
  */
 
 var app = new Vue({
-  el: '#app'
+  el: "#app"
 });
 
 /***/ }),
@@ -37994,7 +38015,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("new-task-form", { on: { refresh: _vm.refreshPage } }),
+      _c("new-task-form", { on: { gotoFirstPage: _vm.loadFirstPage } }),
       _vm._v(" "),
       _c("list", {
         attrs: { tasks: _vm.tasks },

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="main">
 		<new-task-form @gotoFirstPage="loadFirstPage"></new-task-form>
 		<list :tasks="tasks" @refresh="refreshPage"></list>
 		<page-navigation
@@ -14,8 +14,11 @@
 import List from "./List.vue";
 import NewTaskForm from "./NewTaskForm.vue";
 import PageNavigation from "./PageNavigation.vue";
+import "../../css/app.css";
+
 export default {
 	components: { List, NewTaskForm, PageNavigation },
+
 	mounted() {
 		console.log("App component mounted.");
 		this.initializeApp();

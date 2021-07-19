@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<ul v-for="task in tasks" :key="task.id">
+		<ul v-for="task in tasks" :key="task.id" class="list__style__none">
 			<task :task="task" @refresh="$emit('refresh')"></task>
 		</ul>
 	</div>

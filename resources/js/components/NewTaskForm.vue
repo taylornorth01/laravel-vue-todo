@@ -26,8 +26,6 @@ export default {
 				.post("/tasks", { task_title: this.title, text_body: this.description })
 				.then((res) => {
 					console.log("Task creation successful.");
-					this.tasks = res.data.data;
-					this.meta = { links: res.data.links, data: res.data.meta };
 				})
 				.catch((err) => console.error("Task creation failed.", err));
 		}

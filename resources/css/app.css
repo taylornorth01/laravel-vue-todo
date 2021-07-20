@@ -104,8 +104,121 @@
 }
 .task__item {
 	background: white;
-	padding: 8px;
 	border-radius: 4px;
+}
+.task__wrap {
+	display: grid;
+	grid-template-columns: 20% 70% 10%;
+	height: 100%;
+}
+.task__details {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 10px;
+	justify-content: space-between;
+	min-height: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.task__details::after {
+	content: "";
+	width: 0.5px;
+	height: calc(100% - 20px);
+	background: #b8b8b8;
+	top: 10px;
+	left: calc(100%);
+	position: absolute;
+}
+.task__title {
+	font-size: 16px;
+	font-weight: 500;
+}
+.task__date {
+	color: #707070;
+}
+.task__body {
+	padding: 10px;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+.task__body::after {
+	content: "";
+	width: 0.5px;
+	height: calc(100% - 20px);
+	background: #b8b8b8;
+	top: 10px;
+	left: calc(100%);
+	position: absolute;
+}
+.task__state {
+	min-width: 8px;
+	height: 80%;
+	border-radius: 4px;
+	margin-left: 7px;
+}
+
+.task__state__edit {
+	min-width: 8px;
+	height: 80%;
+	border-radius: 4px;
+	margin-left: 7px;
+	cursor: pointer;
+}
+
+.task__item input {
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	border: 1px solid #b8b8b8;
+	border-radius: 4px;
+	padding: 8px;
+}
+.task__item input:focus {
+	outline: none;
+	border: 2px solid #3d70e7;
+	padding: 7px;
+}
+.task__submit {
+	color: #3d70e7;
+	margin-left: 10px;
+	transition: color 100ms;
+	cursor: pointer;
+}
+.task__submit:hover {
+	color: #5583f0;
+}
+
+.task__options {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+.task__options button {
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	background: #3d70e7;
+	transition: background 100ms;
+	color: white;
+	cursor: pointer;
+}
+.task__options button:first-child {
+	margin-bottom: 4px;
+}
+.task__options button:hover {
+	background: #5583f0;
+}
+
+.red {
+	background: rgb(236, 72, 66);
+}
+.green {
+	background: rgb(63, 202, 50);
 }
 
 /* .flex__spacebetween {

@@ -13,7 +13,7 @@
 				@loadPage="requestPage"
 			></page-navigation>
 		</div>
-		<div>
+		<div class="right__panel">
 			<list :tasks="tasks" @refresh="refreshPage"></list>
 		</div>
 	</div>

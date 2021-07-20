@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('task_title', 50);
             $table->string('text_body', 200);
             $table->timestamp('date_created')->useCurrent();
+            $table->boolean('completed')->default(FALSE);
             $table->timestamps();
         });
     }

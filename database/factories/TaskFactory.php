@@ -24,7 +24,8 @@ class TaskFactory extends Factory
         return [
             'task_title' => $this->faker->word(),
             'text_body' => $this->faker->paragraph(2, false),
-            'date_created' => $this->faker->dateTimeThisYear('-1 months')
+            'date_created' => $this->faker->dateTimeThisYear('-1 months'),
+            'completed' => $this->faker->boolean()
         ];
     }
 }

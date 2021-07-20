@@ -90,6 +90,24 @@
 	background: #5583f0;
 }
 
+.right__panel {
+	padding: 8px;
+}
+
+.task__list {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(10, 1fr);
+	gap: 10px 0px;
+	width: 100%;
+	height: 100%;
+}
+.task__item {
+	background: white;
+	padding: 8px;
+	border-radius: 4px;
+}
+
 /* .flex__spacebetween {
   width: 100%;
   display: flex;

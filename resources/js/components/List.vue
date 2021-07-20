@@ -1,14 +1,12 @@
 <template>
-	<div class="task__list">
-		<ul class="list__style__none">
-			<task
-				v-for="task in tasks"
-				:key="task.id"
-				:task="task"
-				@refresh="$emit('refresh')"
-			></task>
-		</ul>
-	</div>
+	<ul class="list__style__none task__list">
+		<task
+			v-for="task in tasks"
+			:key="task.id"
+			:task="task"
+			@refresh="$emit('refresh')"
+		></task>
+	</ul>
 </template>
 
 <script>

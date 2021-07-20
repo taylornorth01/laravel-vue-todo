@@ -1993,6 +1993,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2115,6 +2118,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6723,7 +6756,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*,\r\n*:before,\r\n*:after {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tfont-family: \"DM Sans\", sans-serif;\r\n}\r\n\r\n.list__style__none {\r\n\tlist-style: none;\r\n}\r\n\r\n.main {\r\n\tbackground: #f4f4f4;\r\n\tmargin: 20px;\r\n\tborder-radius: 4px;\r\n\theight: calc(100vh - 40px);\r\n\tdisplay: grid;\r\n\tgrid-template-columns: 328px auto;\r\n\t-moz-column-gap: 10px;\r\n\t     column-gap: 10px;\r\n}\r\n\r\n.app__title {\r\n\tfont-size: 24px;\r\n\tfont-weight: 700;\r\n\tmargin-bottom: 16px;\r\n}\r\n\r\n.left__panel {\r\n\tpadding: 10px 10px;\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tjustify-content: space-between;\r\n}\r\n\r\n.newtask__form input {\r\n\twidth: 100%;\r\n\tborder-radius: 4px;\r\n\tpadding: 10px;\r\n\tmargin-bottom: 10px;\r\n}\r\n.newtask__form input:focus {\r\n\toutline: none;\r\n\tborder: 2px solid #3d70e7;\r\n\tpadding: 8px;\r\n}\r\n.newtask__form button {\r\n\tpadding: 10px;\r\n\tbackground-color: #3d70e7;\r\n\tcolor: white;\r\n\tborder-radius: 4px;\r\n\ttransition: background 100ms;\r\n\tcursor: pointer;\r\n}\r\n.newtask__form button:hover {\r\n\tbackground-color: #5583f0;\r\n}\r\n\r\n.page__navigation {\r\n\twidth: 100%;\r\n}\r\n.page__info {\r\n\tdisplay: flex;\r\n\tjustify-content: space-between;\r\n\tmargin: 10px 4px;\r\n\tfont-size: 14px;\r\n}\r\n.page__buttons {\r\n\tdisplay: flex;\r\n}\r\n.page__buttons div {\r\n\tbackground: #3d70e7;\r\n\twidth: 100%;\r\n\tdisplay: flex;\r\n\tjustify-content: center;\r\n\talign-items: center;\r\n\tpadding: 8px;\r\n\tborder-radius: 4px;\r\n\ttransition: background 100ms;\r\n\tcursor: pointer;\r\n\tcolor: white;\r\n\tfont-size: 14px;\r\n}\r\n.page__buttons div:first-child {\r\n\tmargin-right: 5px;\r\n}\r\n.page__buttons div:hover {\r\n\tbackground: #5583f0;\r\n}\r\n\r\n/* .flex__spacebetween {\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\n.main__layout {\r\n  background: #F4F4F4;\r\n  margin: 20px;\r\n  border-radius: 4px;\r\n  height: calc(100vh - 40px);\r\n  display: grid;\r\n\tgrid-template-columns: 328px auto;\r\n}\r\n\r\n.control__panel {\r\n  background: #f3f3f3;\r\n  padding: 0 20px;\r\n  padding-bottom: 20px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  border-radius: 4px 0 0 4px;\r\n}\r\n\r\n.app__title {\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n  margin: 16px 0;\r\n}\r\n\r\n.action__button {\r\n  height: 46px;\r\n  min-width: 100%;\r\n  background: #FCFCFC;\r\n  /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); \r\n  border-radius: 4px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  padding: 0 14px;\r\n  cursor: pointer;\r\n  transition: background 100ms;\r\n  font-size: 18px;\r\n}\r\n.action__button:hover {\r\n  background: #5ba2ff;\r\n}\r\n\r\n\r\n.page__info {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  margin: 10px 4px;\r\n}\r\n\r\n.task__item {\r\n  /* background: cornflowerblue; \r\n  margin: 0 10px;\r\n  padding: 10px 0;\r\n  padding-left: 10px;\r\n  border-bottom: 1px solid #e9e9e9;\r\n  display: flex;\r\n}\r\n.task__title {\r\n  font-size: 18px;\r\n  font-weight: 500;\r\n  /* margin-bottom: 10px; \r\n}\r\n.task__date {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  width: 120px;\r\n}\r\n.task__details {\r\n  min-width: 300px;\r\n  border-right: 1px solid #e9e9e9;\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n.task__state {\r\n  width: 6px;\r\n  margin: 5px;\r\n  background: rgb(24, 182, 148);\r\n  border-radius: 4px;\r\n}\r\n.task__content {\r\n  display: flex;\r\n  align-items: center;\r\n  /* max-width: 600px; \r\n  padding: 0 10px;\r\n  /* border-right: 1px solid #e9e9e9; \r\n}\r\n.task__options {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  min-width: 51px;\r\n  transition: background 100ms;\r\n  border-radius: 4px;\r\n  cursor: pointer;\r\n  position: relative;\r\n}\r\n.task__options:hover {\r\n  background: white;\r\n}\r\n.task__menu {\r\n  position: absolute;\r\n  background: white;\r\n  width: 100px;\r\n  border-radius: 4px;\r\n  top: 45px;\r\n  right: 0;\r\n  z-index: 100;\r\n}\r\n.task__menu p {\r\n  padding: 10px;\r\n} */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "*,\r\n*:before,\r\n*:after {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tfont-family: \"DM Sans\", sans-serif;\r\n}\r\n\r\n.list__style__none {\r\n\tlist-style: none;\r\n}\r\n\r\n.main {\r\n\tbackground: #f4f4f4;\r\n\tmargin: 20px;\r\n\tborder-radius: 4px;\r\n\theight: calc(100vh - 40px);\r\n\tdisplay: grid;\r\n\tgrid-template-columns: 328px auto;\r\n\t-moz-column-gap: 10px;\r\n\t     column-gap: 10px;\r\n}\r\n\r\n.app__title {\r\n\tfont-size: 24px;\r\n\tfont-weight: 700;\r\n\tmargin-bottom: 16px;\r\n}\r\n\r\n.left__panel {\r\n\tpadding: 10px 10px;\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tjustify-content: space-between;\r\n}\r\n\r\n.newtask__form input {\r\n\twidth: 100%;\r\n\tborder-radius: 4px;\r\n\tpadding: 10px;\r\n\tmargin-bottom: 10px;\r\n}\r\n.newtask__form input:focus {\r\n\toutline: none;\r\n\tborder: 2px solid #3d70e7;\r\n\tpadding: 8px;\r\n}\r\n.newtask__form button {\r\n\tpadding: 10px;\r\n\tbackground-color: #3d70e7;\r\n\tcolor: white;\r\n\tborder-radius: 4px;\r\n\ttransition: background 100ms;\r\n\tcursor: pointer;\r\n}\r\n.newtask__form button:hover {\r\n\tbackground-color: #5583f0;\r\n}\r\n\r\n.page__navigation {\r\n\twidth: 100%;\r\n}\r\n.page__info {\r\n\tdisplay: flex;\r\n\tjustify-content: space-between;\r\n\tmargin: 10px 4px;\r\n\tfont-size: 14px;\r\n}\r\n.page__buttons {\r\n\tdisplay: flex;\r\n}\r\n.page__buttons div {\r\n\tbackground: #3d70e7;\r\n\twidth: 100%;\r\n\tdisplay: flex;\r\n\tjustify-content: center;\r\n\talign-items: center;\r\n\tpadding: 8px;\r\n\tborder-radius: 4px;\r\n\ttransition: background 100ms;\r\n\tcursor: pointer;\r\n\tcolor: white;\r\n\tfont-size: 14px;\r\n}\r\n.page__buttons div:first-child {\r\n\tmargin-right: 5px;\r\n}\r\n.page__buttons div:hover {\r\n\tbackground: #5583f0;\r\n}\r\n\r\n.right__panel {\r\n\tpadding: 8px;\r\n}\r\n\r\n.task__list {\r\n\tdisplay: grid;\r\n\tgrid-template-columns: 1fr;\r\n\tgrid-template-rows: repeat(10, 1fr);\r\n\tgap: 10px 0px;\r\n\twidth: 100%;\r\n\theight: 100%;\r\n}\r\n.task__item {\r\n\tbackground: white;\r\n\tborder-radius: 4px;\r\n}\r\n.task__wrap {\r\n\tdisplay: grid;\r\n\tgrid-template-columns: 20% 70% 10%;\r\n\theight: 100%;\r\n}\r\n.task__details {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tpadding: 10px 10px;\r\n\tjustify-content: space-between;\r\n\tmin-height: 100%;\r\n\tposition: relative;\r\n\tdisplay: flex;\r\n\tflex-direction: row;\r\n\talign-items: center;\r\n}\r\n.task__details::after {\r\n\tcontent: \"\";\r\n\twidth: 0.5px;\r\n\theight: calc(100% - 20px);\r\n\tbackground: #b8b8b8;\r\n\ttop: 10px;\r\n\tleft: calc(100%);\r\n\tposition: absolute;\r\n}\r\n.task__title {\r\n\tfont-size: 16px;\r\n\tfont-weight: 500;\r\n}\r\n.task__date {\r\n\tcolor: #707070;\r\n}\r\n.task__body {\r\n\tpadding: 10px;\r\n\tposition: relative;\r\n\tdisplay: flex;\r\n\talign-items: center;\r\n}\r\n.task__body::after {\r\n\tcontent: \"\";\r\n\twidth: 0.5px;\r\n\theight: calc(100% - 20px);\r\n\tbackground: #b8b8b8;\r\n\ttop: 10px;\r\n\tleft: calc(100%);\r\n\tposition: absolute;\r\n}\r\n.task__state {\r\n\tmin-width: 8px;\r\n\theight: 80%;\r\n\tborder-radius: 4px;\r\n\tmargin-left: 7px;\r\n}\r\n\r\n.task__state__edit {\r\n\tmin-width: 8px;\r\n\theight: 80%;\r\n\tborder-radius: 4px;\r\n\tmargin-left: 7px;\r\n\tcursor: pointer;\r\n}\r\n\r\n.task__item input {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tfont-size: 16px;\r\n\tborder: 1px solid #b8b8b8;\r\n\tborder-radius: 4px;\r\n\tpadding: 8px;\r\n}\r\n.task__item input:focus {\r\n\toutline: none;\r\n\tborder: 2px solid #3d70e7;\r\n\tpadding: 7px;\r\n}\r\n.task__submit {\r\n\tcolor: #3d70e7;\r\n\tmargin-left: 10px;\r\n\ttransition: color 100ms;\r\n\tcursor: pointer;\r\n}\r\n.task__submit:hover {\r\n\tcolor: #5583f0;\r\n}\r\n\r\n.task__options {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tjustify-content: space-between;\r\n\talign-items: center;\r\n\tpadding: 10px;\r\n}\r\n.task__options button {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tborder-radius: 4px;\r\n\tbackground: #3d70e7;\r\n\ttransition: background 100ms;\r\n\tcolor: white;\r\n\tcursor: pointer;\r\n}\r\n.task__options button:first-child {\r\n\tmargin-bottom: 4px;\r\n}\r\n.task__options button:hover {\r\n\tbackground: #5583f0;\r\n}\r\n\r\n.red {\r\n\tbackground: rgb(236, 72, 66);\r\n}\r\n.green {\r\n\tbackground: rgb(63, 202, 50);\r\n}\r\n\r\n/* .flex__spacebetween {\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\n.main__layout {\r\n  background: #F4F4F4;\r\n  margin: 20px;\r\n  border-radius: 4px;\r\n  height: calc(100vh - 40px);\r\n  display: grid;\r\n\tgrid-template-columns: 328px auto;\r\n}\r\n\r\n.control__panel {\r\n  background: #f3f3f3;\r\n  padding: 0 20px;\r\n  padding-bottom: 20px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  border-radius: 4px 0 0 4px;\r\n}\r\n\r\n.app__title {\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n  margin: 16px 0;\r\n}\r\n\r\n.action__button {\r\n  height: 46px;\r\n  min-width: 100%;\r\n  background: #FCFCFC;\r\n  /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); \r\n  border-radius: 4px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  padding: 0 14px;\r\n  cursor: pointer;\r\n  transition: background 100ms;\r\n  font-size: 18px;\r\n}\r\n.action__button:hover {\r\n  background: #5ba2ff;\r\n}\r\n\r\n\r\n.page__info {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  margin: 10px 4px;\r\n}\r\n\r\n.task__item {\r\n  /* background: cornflowerblue; \r\n  margin: 0 10px;\r\n  padding: 10px 0;\r\n  padding-left: 10px;\r\n  border-bottom: 1px solid #e9e9e9;\r\n  display: flex;\r\n}\r\n.task__title {\r\n  font-size: 18px;\r\n  font-weight: 500;\r\n  /* margin-bottom: 10px; \r\n}\r\n.task__date {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  width: 120px;\r\n}\r\n.task__details {\r\n  min-width: 300px;\r\n  border-right: 1px solid #e9e9e9;\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n.task__state {\r\n  width: 6px;\r\n  margin: 5px;\r\n  background: rgb(24, 182, 148);\r\n  border-radius: 4px;\r\n}\r\n.task__content {\r\n  display: flex;\r\n  align-items: center;\r\n  /* max-width: 600px; \r\n  padding: 0 10px;\r\n  /* border-right: 1px solid #e9e9e9; \r\n}\r\n.task__options {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  min-width: 51px;\r\n  transition: background 100ms;\r\n  border-radius: 4px;\r\n  cursor: pointer;\r\n  position: relative;\r\n}\r\n.task__options:hover {\r\n  background: white;\r\n}\r\n.task__menu {\r\n  position: absolute;\r\n  background: white;\r\n  width: 100px;\r\n  border-radius: 4px;\r\n  top: 45px;\r\n  right: 0;\r\n  z-index: 100;\r\n}\r\n.task__menu p {\r\n  padding: 10px;\r\n} */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38460,6 +38493,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
+      { staticClass: "right__panel" },
       [
         _c("list", {
           attrs: { tasks: _vm.tasks },
@@ -38494,25 +38528,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "ul",
+    { staticClass: "list__style__none task__list" },
     _vm._l(_vm.tasks, function(task) {
-      return _c(
-        "ul",
-        { key: task.id, staticClass: "list__style__none" },
-        [
-          _c("task", {
-            attrs: { task: task },
-            on: {
-              refresh: function($event) {
-                return _vm.$emit("refresh")
-              }
-            }
-          })
-        ],
-        1
-      )
+      return _c("task", {
+        key: task.id,
+        attrs: { task: task },
+        on: {
+          refresh: function($event) {
+            return _vm.$emit("refresh")
+          }
+        }
+      })
     }),
-    0
+    1
   )
 }
 var staticRenderFns = []
@@ -38668,18 +38697,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("li", [
-      !_vm.isEditVisible
-        ? _c("div", [
-            _vm._v(
-              "\n\t\t\t" +
-                _vm._s(_vm.task.task_title) +
-                " - " +
-                _vm._s(_vm.task.text_body)
-            ),
-            _c("br"),
-            _vm._v(_vm._s(_vm.task.date_created) + "\n\t\t\t"),
+  return _c("li", { staticClass: "task__item" }, [
+    !_vm.isEditVisible
+      ? _c("div", { staticClass: "task__wrap" }, [
+          _c("div", { staticClass: "task__details" }, [
+            _c("div", [
+              _c("p", { staticClass: "task__title" }, [
+                _vm._v(_vm._s(_vm.task.task_title))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "task__date" }, [
+                _vm._v(_vm._s(_vm.task.date_created.split(" ").shift()))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "task__state green" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "task__body" }, [
+            _vm._v("\n\t\t\t" + _vm._s(_vm.task.text_body) + "\n\t\t")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "task__options" }, [
             _c(
               "button",
               {
@@ -38694,7 +38733,9 @@ var render = function() {
             _vm._v(" "),
             _c("button", { on: { click: _vm.deleteTask } }, [_vm._v("Delete")])
           ])
-        : _c("div", [
+        ])
+      : _c("div", { staticClass: "task__wrap" }, [
+          _c("div", { staticClass: "task__details" }, [
             _c("input", {
               directives: [
                 {
@@ -38716,6 +38757,10 @@ var render = function() {
               }
             }),
             _vm._v(" "),
+            _c("div", { staticClass: "task__state__edit green" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "task__body" }, [
             _c("input", {
               directives: [
                 {
@@ -38737,9 +38782,48 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("button", { on: { click: _vm.editTask } }, [_vm._v("Submit")])
+            _c("div", { staticClass: "task__submit" }, [
+              _c(
+                "svg",
+                {
+                  staticClass: "bi bi-arrow-right-square-fill",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "30",
+                    height: "30",
+                    fill: "currentColor",
+                    viewBox: "0 0 16 16"
+                  },
+                  on: { click: _vm.editTask }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"
+                    }
+                  })
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "task__options" }, [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.isEditVisible = !_vm.isEditVisible
+                  }
+                }
+              },
+              [_vm._v("Edit")]
+            ),
+            _vm._v(" "),
+            _c("button", { on: { click: _vm.deleteTask } }, [_vm._v("Delete")])
           ])
-    ])
+        ])
   ])
 }
 var staticRenderFns = []

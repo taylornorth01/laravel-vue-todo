@@ -10,6 +10,6 @@ class Task extends Model
 	use HasFactory;
 
 	protected $fillable = [
-		'task_title', 'text_body'
+		'task_title', 'text_body', 'completed'
 	];
 }

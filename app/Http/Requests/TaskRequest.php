@@ -30,7 +30,8 @@ class TaskRequest extends FormRequest
 					'max:50',
 					Rule::unique('tasks')->ignore($this->task)
 				],
-				'text_body' => 'required|max:200'
+				'text_body' => 'required|max:200',
+                'completed' => 'sometimes|required'
 			];
     }
 }

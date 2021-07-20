@@ -1,20 +1,16 @@
 <template>
-	<div>
-		<li>
-			<div v-if="!isEditVisible">
-				{{ task.task_title }} - {{ task.text_body }}<br />{{
-					task.date_created
-				}}
-				<button @click="isEditVisible = !isEditVisible">Edit</button>
-				<button @click="deleteTask">Delete</button>
-			</div>
-			<div v-else>
-				<input type="text" v-model="title" />
-				<input type="text" v-model="description" />
-				<button @click="editTask">Submit</button>
-			</div>
-		</li>
-	</div>
+	<li class="task__item">
+		<div v-if="!isEditVisible">
+			{{ task.task_title }} - {{ task.text_body }}<br />{{ task.date_created }}
+			<button @click="isEditVisible = !isEditVisible">Edit</button>
+			<button @click="deleteTask">Delete</button>
+		</div>
+		<div v-else>
+			<input type="text" v-model="title" />
+			<input type="text" v-model="description" />
+			<button @click="editTask">Submit</button>
+		</div>
+	</li>
 </template>
 
 <script>

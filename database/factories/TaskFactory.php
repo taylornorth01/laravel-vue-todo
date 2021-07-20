@@ -22,8 +22,8 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            'task_title' => $this->faker->word(),
-            'text_body' => $this->faker->paragraph(2, false),
+            'task_title' => $this->faker->unique()->word(),
+            'text_body' => $this->faker->unique()->paragraph(2, false),
             'date_created' => $this->faker->dateTimeThisYear('-1 months'),
             'completed' => $this->faker->boolean()
         ];

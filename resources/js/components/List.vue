@@ -1,7 +1,12 @@
 <template>
-	<div>
-		<ul v-for="task in tasks" :key="task.id" class="list__style__none">
-			<task :task="task" @refresh="$emit('refresh')"></task>
+	<div class="task__list">
+		<ul class="list__style__none">
+			<task
+				v-for="task in tasks"
+				:key="task.id"
+				:task="task"
+				@refresh="$emit('refresh')"
+			></task>
 		</ul>
 	</div>
 </template>

@@ -2172,6 +2172,7 @@ __webpack_require__.r(__webpack_exports__);
     console.log("Task component mounted.");
   },
   data: function data() {
+    console.log(this.task.complete);
     return {
       isEditVisible: false,
       title: this.task.task_title,
@@ -2207,6 +2208,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         return _this2.$emit("refresh");
       });
+    }
+  },
+  computed: {
+    isComplete: function isComplete() {
+      return this.task.completed == 1 ? "green" : "red";
     }
   }
 });
@@ -38711,7 +38717,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "task__state green" })
+            _c("div", { staticClass: "task__state", class: _vm.isComplete })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "task__body" }, [
@@ -38757,7 +38763,10 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "task__state__edit green" })
+            _c("div", {
+              staticClass: "task__state__edit",
+              class: _vm.isComplete
+            })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "task__body" }, [

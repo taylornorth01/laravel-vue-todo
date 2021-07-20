@@ -6,7 +6,11 @@
 					<p class="task__title">{{ task.task_title }}</p>
 					<p class="task__date">{{ task.date_created.split(" ").shift() }}</p>
 				</div>
-				<div class="task__state" v-bind:class="isComplete"></div>
+				<div
+					class="task__state"
+					v-bind:class="isComplete"
+					@click="completeTask"
+				></div>
 			</div>
 			<div class="task__body">
 				{{ task.text_body }}
@@ -19,7 +23,7 @@
 		<div v-else class="task__wrap">
 			<div class="task__details">
 				<input type="text" v-model="title" />
-				<div class="task__state__edit" v-bind:class="isComplete"></div>
+				<div class="task__state" v-bind:class="isComplete"></div>
 			</div>
 			<div class="task__body">
 				<input type="text" v-model="description" />
@@ -88,6 +92,26 @@ export default {
 					console.log("Task deleting successful.");
 				})
 				.catch((err) => console.error("Task deleting failed.", err))
+				.then(() => this.$emit("refresh"));
+		},
+
+		completeTask() {
+			console.log("Completing task.");
+			console.log({
+				task_title: this.title,
+				text_body: this.description,
+				completed: this.task.completed ? "0" : "1"
+			});
+			axios
+				.put("/tasks/" + this.task.id, {
+					task_title: this.title,
+					text_body: this.description,
+					completed: this.task.completed ? "0" : "1"
+				})
+				.then((res) => {
+					console.log("Task completing successful.");
+				})
+				.catch((err) => console.error("Task completing failed.", err))
 				.then(() => this.$emit("refresh"));
 		}
 	},

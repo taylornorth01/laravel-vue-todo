@@ -6,7 +6,7 @@
 					<p class="task__title">{{ task.task_title }}</p>
 					<p class="task__date">{{ task.date_created.split(" ").shift() }}</p>
 				</div>
-				<div class="task__state green"></div>
+				<div class="task__state" v-bind:class="isComplete"></div>
 			</div>
 			<div class="task__body">
 				{{ task.text_body }}
@@ -19,7 +19,7 @@
 		<div v-else class="task__wrap">
 			<div class="task__details">
 				<input type="text" v-model="title" />
-				<div class="task__state__edit green"></div>
+				<div class="task__state__edit" v-bind:class="isComplete"></div>
 			</div>
 			<div class="task__body">
 				<input type="text" v-model="description" />
@@ -54,6 +54,7 @@ export default {
 	},
 
 	data() {
+		console.log(this.task.complete);
 		return {
 			isEditVisible: false,
 			title: this.task.task_title,
@@ -88,6 +89,12 @@ export default {
 				})
 				.catch((err) => console.error("Task deleting failed.", err))
 				.then(() => this.$emit("refresh"));
+		}
+	},
+
+	computed: {
+		isComplete() {
+			return this.task.completed == 1 ? "green" : "red";
 		}
 	}
 };
